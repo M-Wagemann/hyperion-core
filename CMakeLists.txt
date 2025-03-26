@@ -2,17 +2,17 @@ cmake_minimum_required(VERSION 2.8.3)
 project(hyperion)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+# add_compile_optionsament_python(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS rospy)
+find_package(ament_cmake REQUIRED COMPONENTS rclpy)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-catkin_python_setup()
+#catkin_python_setup()
 
 ###################################
 ## catkin specific configuration ##
@@ -23,12 +23,12 @@ catkin_python_setup()
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
+#catkin_package(
 	#  INCLUDE_DIRS include
 	#  LIBRARIES knowledge_base
 	#  CATKIN_DEPENDS other_catkin_pkg
 	#  DEPENDS system_lib
-	)
+#	)
 
 ###########
 ## Build ##
@@ -36,10 +36,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
+#target_include_directories(
 	# include
 	# ${catkin_INCLUDE_DIRS}
-	)
+#	)
 
 #############
 ## Install ##
@@ -57,9 +57,9 @@ include_directories(
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#   ARCHIVE DESTINATION lib
+#   LIBRARY DESTINATION lib
+#   RUNTIME DESTINATION bin
 # )
 
 ## Mark cpp header files for installation
@@ -73,9 +73,9 @@ include_directories(
 # install(FILES
 #   # myfile1
 #   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+#   DESTINATION share/${PROJECT_NAME}
 # )
 
 
 # CATKIN_INSTALL_PYTHON(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/hyperion/runner.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}/hyperion)
-INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/hyperion" DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/hyperion" DESTINATION share/${PROJECT_NAME})
